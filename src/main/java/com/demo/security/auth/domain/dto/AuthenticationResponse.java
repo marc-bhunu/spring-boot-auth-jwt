@@ -1,4 +1,4 @@
-package com.demo.security.auth.dtos;
+package com.demo.security.auth.domain.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,4 +11,5 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class AuthenticationResponse {
     private String token;
+    private String tokenExpiry;
 }

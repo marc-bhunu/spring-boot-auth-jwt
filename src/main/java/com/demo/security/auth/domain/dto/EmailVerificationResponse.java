@@ -1,15 +1,18 @@
-package com.demo.security.auth.dtos;
+package com.demo.security.auth.domain.dto;
+
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
-public class AuthenticationRequest {
+@Data
+public class EmailVerificationResponse {
     private String email;
-    private String password;
+    private boolean verified;
+    private String message;
+
 }

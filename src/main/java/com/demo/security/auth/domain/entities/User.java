@@ -1,11 +1,13 @@
-package com.demo.security.user;
+package com.demo.security.auth.domain.entities;
 
+import com.demo.security.auth.domain.enums.Role;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.List;
 
@@ -23,6 +25,9 @@ public class User implements UserDetails {
     private String lastName;
     private String email;
     private String password;
+    private boolean enabled;
+    private String verificationCode;
+    private LocalDateTime verificationCodeExpiryDate;
 
     @Enumerated(EnumType.STRING)
     private Role role;
@@ -60,6 +65,6 @@ public class User implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return true;
+        return enabled;
     }
 }

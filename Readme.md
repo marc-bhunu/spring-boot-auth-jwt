@@ -46,32 +46,63 @@ The application will start at: `http://localhost:9000`
 
 - `POST /api/v1/auth/register` — User Registration
 - `POST /api/v1/auth/authenticate` — User Login
-- `GET /api/v1/demo/hello` — Secured Demo Endpoint
+- `POST /api/v1/auth/verify` — Email Verification
+- `GET /api/v1/auth/resend-verification-code` — Resend Verification Code
 
 ## Testing the Endpoints
 
 ### User Registration
 
 ```bash
-curl -X POST http://localhost:9000/api/v1/auth/register \
--H "Content-Type: application/json" \
--d '{
-  "firstName": "John",
-  "lastName": "Jonas",
-  "email": "user@email.com",
-  "password": "1234"
-}'
+Invoke-RestMethod -Uri "http://localhost:9000/api/v1/auth/register" `
+  -Method POST `
+  -Headers @{ "Content-Type" = "application/json" } `
+  -Body '{
+    "firstName": "John",
+    "lastName": "Jonas",
+    "email": "mac@gmail.com",
+    "password": "1234"
+  }'
 ```
 
 ### User Authentication
 
 ```bash
-curl -X POST http://localhost:9000/api/v1/auth/authenticate \
--H "Content-Type: application/json" \
--d '{
-  "email": "user@email.com",
-  "password": "1234"
-}'
+Invoke-RestMethod -Uri "http://localhost:9000/api/v1/auth/authenticate" `
+  -Method POST `
+  -Headers @{ "Content-Type" = "application/json" } `
+  -Body '{
+    "email": "user@email.com",
+    "password": "1234"
+  }'
+```
+
+### Verify Email
+```bash
+Invoke-RestMethod -Uri "http://localhost:9000/api/v1/auth/verify" `
+  -Method POST `
+  -Headers @{
+    "Content-Type" = "application/json"
+    "Authorization" = "Bearer <your_token_here>"
+  } `
+  -Body '{
+    "email": "user@email.com",
+    "verificationCode": "12349909"
+  }'
+```
+
+### Resend Verification Code
+```bash
+Invoke-RestMethod -Uri "http://localhost:9000/api/v1/auth/verify/" `
+  -Method POST `
+  -Headers @{
+    "Content-Type" = "application/json"
+    "Authorization" = "Bearer <your_token_here>"
+  } `
+  -Body '{
+    "email": "user@email.com",
+    "verificationCode": $null
+  }'
 ```
 
 ## Configuration

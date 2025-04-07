@@ -1,11 +1,15 @@
 package com.demo.security.config;
 
-import com.demo.security.user.UserRepository;
+import com.demo.security.auth.reposity.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+
+import java.util.Properties;
 
 @Configuration
 @RequiredArgsConstructor

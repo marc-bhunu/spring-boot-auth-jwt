@@ -1,4 +1,4 @@
-package com.demo.security.auth;
+package com.demo.security.auth.domain;
 
 
 import lombok.AllArgsConstructor;
