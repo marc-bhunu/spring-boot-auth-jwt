@@ -1,6 +1,4 @@
 package com.demo.security.auth.reposity;
-
-
 import com.demo.security.auth.domain.entities.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

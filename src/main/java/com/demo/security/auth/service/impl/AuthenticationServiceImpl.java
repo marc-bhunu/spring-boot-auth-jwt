@@ -65,7 +65,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
                 .lastName(registerRequest.getLastName())
                 .email(registerRequest.getEmail())
                 .password(encoder.encode(registerRequest.getPassword()))
-                .role(Role.USER)
+                .role(registerRequest.getRole())
                 .enabled(false)
                 .verificationCode(generateVerificationCode())
                 .verificationCodeExpiryDate(calculateExpiryDate())
